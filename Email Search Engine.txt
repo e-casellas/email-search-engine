@@ -1,0 +1,13 @@
+1	Prompt Message: "Please enter a keyword to search for in your email subjects" in "Don't Write In Any Window" Assign value to Variable: $vSearchQuery$
+2	Start Loop "Each  message on server: imap-mail.outlook.com, User Name: $vEmail$, SSL,  ServerType: IMAP, Message Format: Plain Text"
+3	     If $Email Subject$ Includes $vSearchQuery$ Then  
+4	          Message Box: "We found a message!From: $Email From$Subject: $Email Subject$Received: $Email Received Date$ $Email Received Time$Message:$Email Message$"
+5	          Variable Operation: True To $vEmailsFoundBool$
+6	          Variable Operation: $vEmailCounter$ + 1 To $vEmailCounter$
+7	     End If
+8	End Loop
+9	If $vEmailsFoundBool$ Equal To (=) "False" Then  
+10	     Message Box: "No messages found!"
+11	Else
+12	     Message Box: "$vEmailCounter$ emails were found!"
+13	End If
